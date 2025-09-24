@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "title":"P1",
+        "price":100,
+        "thumbnail":"https://example.com/P1.jpg"
+    },
+    {
+        "id":2,
+        "title":"P2",
+        "price":200,
+        "thumbnail":"https://example.com/P2.jpg"
+    },
+    {
+        "id":3,
+        "title":"P3",
+        "price":300,
+        "thumbnail":"https://example.com/P3.jpg"
+    },
+    {
+        "id":4,
+        "title":"P4",
+        "price":100,
+        "thumbnail":"https://example.com/P4.jpg"
+    },
+    {
+        "id":5,
+        "title":"P5",
+        "price":100,
+        "thumbnail":"https://example.com/P5.jpg"
+    }
+]

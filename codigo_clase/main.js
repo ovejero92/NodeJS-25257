@@ -23,10 +23,11 @@ console.log(persona)
 
 // Spread operator (...)
 
-const array1 = [1,2,3];
+const X = [1,2,3,"asdjakljd"];
 const array2 = [4,2,5,6];
 
-const combinado = [...array1,...array2]
+const combinado = [...X,...array2]
+const combinado2 = [1,2,3,4,2,5,6]
 
 const pers = {nombre:"Ana", edad:30}
 const copia = {...pers,cuidad:"Buenos Aires"}
