@@ -1,5 +1,5 @@
 
-const [,, method, resource, ...params ] = process.argv;
+const [ ,  , method, resource, ...params ] = process.argv; // npm run start GET users
 
 const API_BASE_URL = 'https://fakestoreapi.com';
 
@@ -41,7 +41,7 @@ async function getProductById(productId) {
   console.log(JSON.stringify(product, null, 2));
 }
 
-async function createProduct(title,price,category) {
+async function createProduct(title,price,category, img) {
     console.log('➕ Creando nuevo producto...\n');
 
     const priceNumber = parseFloat(price);
@@ -55,7 +55,7 @@ async function createProduct(title,price,category) {
         price: priceNumber,
         category,
         description: `Producto ${title} creado desde CLI`,
-        image: 'https://via.placeholder.com/200'
+        image: img
     }
 
     const options = {
@@ -99,14 +99,16 @@ function showHelp() {
 
 📦 Consultar todos los productos:
    npm run start GET products
+   npm run start GET users
+
 
 🔍 Consultar producto específico:
    npm run start GET products/<productId>
    Ejemplo: npm run start GET products/15
 
 ➕ Crear nuevo producto:
-   npm run start POST products <title> <price> <category>
-   Ejemplo: npm run start POST products "Remera Nueva" 300 remeras
+   npm run start POST products <title> <price> <category> <img>
+   Ejemplo: npm run start POST products "Remera Nueva" 300 remeras http://www.ejemplo.com/img.png
 
 🗑️  Eliminar producto:
    npm run start DELETE products/<productId>
@@ -139,14 +141,14 @@ async function processCommand() {
 
             case 'POST':
             if (resource === 'products') {
-            const [title, price, category] = params;
+            const [title, price, category, img] = params;
         
-            if (!title || !price || !category) {
-                console.error('❌ Faltan parámetros. Uso: npm run start POST products <title> <price> <category>');
+            if (!title || !price || !category || !img) {
+                console.error('❌ Faltan parámetros. Uso: npm run start POST products <title> <price> <category> <img>');
                 process.exit(1);
             }
         
-            await createProduct(title, price, category);
+            await createProduct(title, price, category, img);
             } else {
                 console.error('❌ Recurso no válido. Usa "products"');
                 process.exit(1);
@@ -164,7 +166,7 @@ async function processCommand() {
       break;
 
     default:
-      console.error(`❌ Método HTTP no soportado: ${httpMethod}`);
+      console.error(`❌ Método HTTP no soportado: ${httpMethod}`); // PUT
       console.log('Métodos disponibles: GET, POST, DELETE');
       process.exit(1);
     }
